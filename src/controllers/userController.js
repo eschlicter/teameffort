@@ -1,8 +1,9 @@
+const userQueries = require("../db/queries.users.js");
 module.exports = {
     index(req, res, next){
         res.render("/users");
     },
-    signUp(req, res, next){
+    signup(req, res, next){
         res.render("/users/sign_up");
     },
     create(req, res, next){
