@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "eschlicter",
+    "username": "emilyschlicter",
     "password": null,
     "database": "blocipedia",
     "host": "127.0.0.1",
@@ -8,7 +8,7 @@
     "logging": false
   },
   "test": {
-    "username": "eschlicter",
+    "username": "emilyschlicter",
     "password": null,
     "database": "blocipedia-test",
     "host": "127.0.0.1",
