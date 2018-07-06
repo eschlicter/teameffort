@@ -4,7 +4,7 @@ module.exports = {
         res.render("/users");
     },
     signup(req, res, next){
-        res.render("/users/sign_up");
+        res.render("/users/signup");
     },
     create(req, res, next){
         let newUser = {
