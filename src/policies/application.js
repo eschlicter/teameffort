@@ -31,7 +31,7 @@ module.exports = class ApplicationPolicy {
   
     edit() {
         return this.new() &&
-        this.record && (this._isMember() || this.is_Owner());
+        this.record && (this._isAdmin() || this.is_Owner());
     }
   
     update() {
