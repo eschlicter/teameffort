@@ -5,6 +5,9 @@ const User = require("../../src/db/models").User;
 describe("Wiki", () => {
 
     beforeEach((done) => {
+        this.wiki;
+        this.user; 
+        
         sequelize.sync({force: true}).then(() => {
             done();
         })

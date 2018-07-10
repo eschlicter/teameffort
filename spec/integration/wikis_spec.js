@@ -16,7 +16,7 @@ describe("routes : wikis", () => {
                 username: "UserExample",
                 email: "user@example.com",
                 password: "1234567890",
-                role: "admin"
+                role: "standard"
             })
             .then((user) => {
                 this.user = user;
@@ -119,7 +119,7 @@ describe("routes : wikis", () => {
                       Wiki.all()
                       .then((wikis) => {
                           expect(err).toBeNull();
-                          expect(wiki.length).toBe(wikiCountBeforeDelete -1);
+                          expect(wikis.length).toBe(wikiCountBeforeDelete -1);
                           done();
                       })
                       .catch((err) => {

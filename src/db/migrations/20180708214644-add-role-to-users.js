@@ -8,7 +8,7 @@ module.exports = {
       {
         type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: "member"
+        defaultValue: "standard"
       }
     );
   },
@@ -16,3 +16,4 @@ module.exports = {
     return queryInterface.removeColumn("Users", "role");
   }
 };
+
