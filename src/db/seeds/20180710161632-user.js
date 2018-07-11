@@ -19,7 +19,7 @@ const faker = require("faker");
     password: "123123",
     createdAt: new Date(),
     updatedAt: new Date(),
-    role: "premium"
+    role: "standard"
    },
    {
     id: 3,
@@ -28,7 +28,7 @@ const faker = require("faker");
     password: "123123",
     createdAt: new Date(),
     updatedAt: new Date(),
-    role: "admin"
+    role: "standard"
    }
  ];
 
