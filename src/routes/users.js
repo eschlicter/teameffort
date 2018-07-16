@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
 const validation = require("./validation");
+const User = require("../../src/db/models").User;
+
+
 router.get("/users/", userController.index);
 router.get("/users/signup/", userController.signup);
 router.post("/users/signup/", validation.validateUsers, userController.create);
