@@ -19,7 +19,7 @@ module.exports = {
             if(err){
               console.log(err);
               req.flash("error", err);
-              res.redirect("/users/signup");
+              res.redirect("users/signup");
             } else {
               passport.authenticate("local")(req, res, () => {
                 req.flash("notice", "You're signed up!");
@@ -36,7 +36,7 @@ module.exports = {
       passport.authenticate("local")(req, res, () => {
         if(!req.user){
         req.flash("notice", "Sign in failed. Please try again.");
-        res.redirect("/users/signin");
+        res.redirect("users/signin");
         } else {
         req.flash("notice", "You're signed in!");
         res.redirect("/")
