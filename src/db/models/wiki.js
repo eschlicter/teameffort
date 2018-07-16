@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false, 
       defaultValue: false
     }
-  }, {});
+  }, {timeStamps: true});
   Wiki.associate = function(models) {
     // associations can be defined here
     Wiki.belongsTo(models.User, {
