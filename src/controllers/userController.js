@@ -1,4 +1,5 @@
 const userQueries = require("../db/queries.users.js");
+const wikiQueries = require("../db/queries.wikis.js");
 const passport = require("passport");
 const secretKey = process.env.SECRET_KEY;
 const publishableKey = process.env.PUBLISHABLE_KEY;
@@ -38,16 +39,17 @@ module.exports = {
       },
     
     signIn(req, res, next){
-      passport.authenticate("local")(req, res, () => {
-        if(!req.user){
+    passport.authenticate("local")(req, res, function () {
+      if (!res) { return next(err); }
+      if(!req.user){
         req.flash("notice", "Sign in failed. Please try again.");
-        res.redirect("users/signin");
-        } else {
-        req.flash("notice", "You're signed in!");
-        res.redirect("/")
-        }
-      })
-    },
+        res.redirect("/users/sign_in");
+      } else {
+        req.flash("notice", "You've successfully signed in!");
+        res.redirect("/");
+      }
+    });
+  },
 
     signOut(req, res, next){
         req.logout();
@@ -70,7 +72,7 @@ module.exports = {
         .then((customer) => {
           stripe.charges.create({
             amount: payment,
-            description: "The Archive Premium Membership Charge",
+            description: " ",
             currency: "USD",
             customer: customer.id
           })
