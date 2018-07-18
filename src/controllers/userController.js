@@ -72,19 +72,20 @@ module.exports = {
         .then((customer) => {
           stripe.charges.create({
             amount: payment,
-            description: " ",
+            description: "Premium Membership",
             currency: "USD",
             customer: customer.id
           })
         }) 
         .then((charge) => {
           userQueries.upgrade(req.user.dataValues.id);
-          res.render("users/payment_success");
+          res.render("users/payment_confirmation");
         })
       },
     
       downgrade(req, res, next){
         userQueries.downgrade(req.user.dataValues.id);
+        wikiQueries.makePublic(req.user.dataValues.id);
         req.flash("notice", "You are no longer a premium user!");
         res.redirect("/");
       }

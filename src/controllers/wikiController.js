@@ -1,5 +1,5 @@
 const wikiQueries = require("../db/queries.wikis.js");
-const Authorizer = require("../policies/wiki");
+const Authorizer = require("../policies/application");
 
 module.exports = {
 
@@ -12,6 +12,16 @@ module.exports = {
             }
         })
     },
+
+    private(req, res, next){
+        wikiQueries.getAllWikis((err, wikis) => {
+          if(err){
+            res.redirect(500, "static/index");
+          } else {
+            res.render("wikis/private", {wikis});
+          }
+        })
+      },
 
     new(req, res, next){
         const authorized = new Authorizer(req.user).new();

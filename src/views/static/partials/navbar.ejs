@@ -9,25 +9,43 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
   
-          <li class="nav-item">
-            <a class="nav-link" href="/wikis">Wikis</a>
-          </li>
-          <% if(currentUser) { %>
+          <% if(currentUser && currentUser.role === "premium") { %>
             <li class="nav-item">
-              <a class="nav-link" href="/users/upgrade">Membership</a>
-            </li>
+              <a class="nav-link" href="/wikis/private">Private Wikis</a>
+             </li>
+             <li>
             <li class="nav-item">
-              <a class="nav-link" href="/users/signout">Sign out</a>
-            </li>
-          
-          <% } else { %>
+              <a class="nav-link" href="/wikis">Wikis</a>
+             </li>
+             <li>
+                <a class="nav-link" href="/users/signout">Sign out</a>
+             </li>
+             <li>
+                <a class="nav-link" href="/users/upgrade">Downgrade Membership</a>
+             </li>
+             <% } else if(currentUser) { %>
+             <li>
+                <a class="nav-link" href="/users/upgrade">Premium Membership</a>
+             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/users/signup">Sign up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/signin">Sign in</a>
-            </li>
-          <% }%>
+              <a class="nav-link" href="/wikis">Wikis</a>
+             </li>
+             <li>
+                <a class="nav-link" href="/users/signout">Sign out</a>
+             </li>
+            <% } else { %>
+              <li class="nav-item">
+              <a class="nav-link" href="/wikis">Wikis</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/signup">Sign up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/signin">Sign in</a>
+              </li>
+          </ul>
+            <% }%>
+    
   
         </ul>
       </div>
