@@ -1,9 +1,9 @@
 const ApplicationPolicy = require("./application");
 
-module.exports = class TopicPolicy extends ApplicationPolicy {
+module.exports = class WikiPolicy extends ApplicationPolicy {
 
   new() {
-    return this._isStandard();
+    return this._isStandard() || this._isPremium() || this._isAdmin();
     
   }
 
@@ -13,7 +13,7 @@ module.exports = class TopicPolicy extends ApplicationPolicy {
 
   edit() {
     return this.new() &&
-    this.record && (this._isOwner() || this._isStandard());
+    this.record && this._isStandard() || this._isPremium() || this._isAdmin();
   }
 
   update() {

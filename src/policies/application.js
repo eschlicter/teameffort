@@ -46,4 +46,8 @@ module.exports = class ApplicationPolicy {
     return this.update() &&
       this.record && (this._isOwner() || this._isAdmin());
   }
+
+  private(){
+    return this.show();
+  }
 }
