@@ -13,7 +13,7 @@ module.exports = {
         })
     },
 
-    private(req, res, next){
+    privateIndex(req, res, next){
         wikiQueries.getAllWikis((err, wikis) => {
           if(err){
             res.redirect(500, "static/index");
@@ -29,7 +29,7 @@ module.exports = {
             res.render("wikis/new");
         } else {
             req.flash("notice", "You are not authorized to do that.");
-            res.redirect("wikis");
+            res.redirect("/wikis");
         }
     },
 
