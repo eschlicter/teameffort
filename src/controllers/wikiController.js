@@ -13,7 +13,7 @@ module.exports = {
         })
     },
 
-    privateIndex(req, res, next){
+    private(req, res, next){
         wikiQueries.getAllWikis((err, wikis) => {
           if(err){
             res.redirect(500, "static/index");
