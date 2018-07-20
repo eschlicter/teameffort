@@ -63,32 +63,42 @@ module.exports = {
         res.render("users/upgrade", {publishableKey});
       },
     
-      payment(req, res, next){
-        let payment = 1500;
-        stripe.customers.create({
-          email: req.body.stripeEmail,
-          source: req.body.stripeToken,
-        }) 
-        .then((customer) => {
-          stripe.charges.create({
-            amount: payment,
-            description: "Premium Membership",
-            currency: "USD",
-            customer: customer.id
-          })
-        }) 
-        .then((charge) => {
-          userQueries.upgrade(req.user.dataValues.id);
-          res.render("users/payment_confirmation");
+    payment(req, res, next){
+      let payment = 1500;
+      stripe.customers.create({
+        email: req.body.stripeEmail,
+        source: req.body.stripeToken,
+      }) 
+      .then((customer) => {
+        stripe.charges.create({
+          amount: payment,
+          description: "Premium Membership",
+          currency: "USD",
+          customer: customer.id
         })
-      },
-    
-      downgrade(req, res, next){
-        userQueries.downgrade(req.user.dataValues.id);
-        wikiQueries.makePublic(req.user.dataValues.id);
-        req.flash("notice", "You are no longer a premium user!");
-        res.redirect("/");
-      }
-    
+      }) 
+      .then((charge) => {
+        userQueries.upgrade(req.user.dataValues.id);
+        res.render("users/payment_confirmation");
+      })
+    },
+  
+    downgrade(req, res, next){
+      userQueries.downgrade(req.user.dataValues.id);
+      wikiQueries.makePublic(req.user.dataValues.id);
+      req.flash("notice", "You are no longer a premium user!");
+      res.redirect("/");
+    },
 
+    listCollaborations(req, res, next){
+      userQueries.getUser(req.user.id, (err, result) => {
+        user = result["user"];
+        collaborations = result["collaborations"];
+        if(err || user == null){
+          res.redirect(404, "/");
+        } else {
+          res.render("users/collaborations", {user, collaborations});
+        }
+      });
+    }
 }

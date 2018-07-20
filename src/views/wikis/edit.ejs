@@ -36,7 +36,10 @@
           <% } %>
 
         <button type="submit" class="btn btn-primary">Update</button>
-      </form>
+        <% if(currentUser && (currentUser.id == wiki.userId || currentUser && currentUser.role == "admin")) { %>
+          <a href="/wikis/<%= wiki.id %>/collaborators" class="btn btn-info">Edit Collaborators</a>
+        <% } %>
+        </form>
     </main>
 
     <% include ../static/partials/baseScripts.ejs %>
