@@ -26,7 +26,7 @@ module.exports = {
         result["wiki"] = wiki;
         Collaborator.scope({method: ["collaboratorsFor", id]}).all()
         .then((collabs) => {
-          result["collaborators"] = collabs;
+          result["collaborators"] = collaborators;
           callback(null, result);
         })
         .catch((err) => {
