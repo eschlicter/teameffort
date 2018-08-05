@@ -1,4 +1,4 @@
-# blocipedia
+# teameffort
 
 Wiki style website with premium paid accounts where users can collaborate
 Made with Express.js, Request, Node.js, PostgreSQL/sequelize/sequelize cli, EJS, Bootstrap, JQuery.
