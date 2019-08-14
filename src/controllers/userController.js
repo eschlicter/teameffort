@@ -3,7 +3,7 @@ const wikiQueries = require("../db/queries.wikis.js");
 const passport = require("passport");
 const secretKey = process.env.SECRET_KEY;
 const publishableKey = process.env.PUBLISHABLE_KEY;
-const stripe = require("stripe")(secretKey);
+const stripe = require("stripe")(secretKey);  
 
 
 
@@ -24,7 +24,7 @@ module.exports = {
         userQueries.createUser(newUser, (err, user) => {
             if(err){
               console.log(err);
-              req.flash("error", err);
+              req.flash("error", err); 
               res.redirect("users/signup");
             } else {
               passport.authenticate("local")(req, res, () => {
@@ -102,3 +102,4 @@ module.exports = {
       });
     }
 }
+

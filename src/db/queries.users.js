@@ -3,6 +3,7 @@ const User = require("./models").User;
 const Collaborator = require('./models').Collaborator;
 const bcrypt = require("bcryptjs");
 const sgMail = require('@sendgrid/mail');
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
@@ -19,7 +20,7 @@ module.exports = {
     .then((user) => {
       const msg = {
         to: newUser.email,
-        from: 'donotreply@example.com',
+        from: 'donotreply@test.com',
         subject: 'Blocipedia Account Confirmation',
         text: 'Welcome to Blocipedia',
         html: '<strong>Please login to start creating wikis</strong>',

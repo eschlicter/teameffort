@@ -11,7 +11,7 @@ module.exports = {
             } else {
                 res.render("wikis/index", {wikis});
             }
-        })
+        });
     },
 
     private(req, res, next){
