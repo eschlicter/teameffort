@@ -20,7 +20,7 @@
                   <%= collaborator.User.name %>
                   <% if(currentUser && (currentUser.role === "premium" || currentUser.role === "admin")) { %>
                     <form action="/wikis/<%= wiki.id %>/collaborators/remove" method="post">
-                      <button type="submit" class="btn btn-danger">Remove Collaborator</button>
+                      <button type="submit" class="btn btn-danger">Remove</button>
                       <input type="hidden" value="<%= collaborator.User.id %>" class="form-control" name="collaborator" >
                     </form>
                 <% } %>
@@ -33,10 +33,11 @@
       <form action="/wikis/<%= wiki.id %>/collaborators/add" method="post">
         <div class="input-group">
           <input type="text" class="form-control" name="collaborator" placeholder="Enter username">
-          <button type="submit" class="btn btn-primary">Add Collaborator</button>
+          <button type="submit" class="btn btn-primary">Add</button>
         </div>
-      </form>
-    <% } %>
-  <% } %>
-</body>
+        </form>
+        <% } %>
+        <% } %>
+        </main>
+    </body>
 </html>

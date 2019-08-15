@@ -34,6 +34,8 @@ module.exports = {
       .catch((err =>{
         callback(err, user);
       }))
+
     });
   }
+  
 }

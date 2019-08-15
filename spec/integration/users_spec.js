@@ -19,10 +19,10 @@ describe("routes : users", () => {
 
   });
 
-  describe("GET /users/signup", () => {
+  describe("GET /users/sign_up", () => {
 
     it("should render a view with a sign up form", (done) => {
-      request.get(`${base}signup`, (err, res, body) => {
+      request.get(`${base}sign_up`, (err, res, body) => {
         expect(err).toBeNull();
         expect(body).not.toBeNull();
         done();
@@ -31,12 +31,12 @@ describe("routes : users", () => {
 
   });
 
-  describe("POST /users/signup", () => {
+  describe("POST /users/sign_up", () => {
 
     it("should create a new user with valid values and redirect", (done) => {
 
       const options = {
-        url: `${base}signup`,
+        url: `${base}sign_up`,
         form: {
           username: "example",
           email: "user@example.com",
@@ -95,7 +95,7 @@ describe("routes : users", () => {
     it("should not create a new user with invalid attributes and redirect", (done) => {
       request.post(
         {
-          url: `${base}signup`,
+          url: `${base}sign_up`,
           form: {
             username: "example",
             email: "no",

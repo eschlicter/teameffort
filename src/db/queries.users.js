@@ -1,9 +1,8 @@
 require("dotenv").config();
 const User = require("./models").User;
-const Collaborator = require('./models').Collaborator;
 const bcrypt = require("bcryptjs");
 const sgMail = require('@sendgrid/mail');
-
+const Collaborator = require("./models").Collaborator;
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
@@ -21,9 +20,9 @@ module.exports = {
       const msg = {
         to: newUser.email,
         from: 'donotreply@test.com',
-        subject: 'Blocipedia Account Confirmation',
-        text: 'Welcome to Blocipedia',
-        html: '<strong>Please login to start creating wikis</strong>',
+        subject: 'Account confirmation',
+        text: 'Welcome to The Archive!',
+        html: '<strong>You can now login to start creating wikis!</strong>',
       };
       sgMail.send(msg);
       callback(null, user);
@@ -33,11 +32,11 @@ module.exports = {
     })
   },
 
-  getUser(id, callback) {
+  getUser(id, callback){
     let result = {};
     User.findById(id)
     .then((user) => {
-      if(!user) {
+      if(!user){
         callback(404);
       } else {
         result["user"] = user;
@@ -57,7 +56,7 @@ module.exports = {
     return User.findById(id)
     .then((user) => {
       if(!user){
-        return callback("User does not exist");
+        return callback("User does not exist!");
       } else {
         return user.updateAttributes({role: "premium"});
       }
@@ -70,7 +69,7 @@ module.exports = {
     return User.findById(id)
     .then((user) => {
       if(!user){
-        return callback("User does not exist");
+        return callback("User does not exist!");
       } else {
         return user.updateAttributes({role: "standard"});
       }
@@ -78,5 +77,4 @@ module.exports = {
       callback(err);
     })
   }
-
 }
