@@ -20,9 +20,9 @@ module.exports = {
     .then((user) => {
       const msg = {
         to: newUser.email,
-        from: 'donotreply@test.com',
-        subject: 'Blocipedia Account Confirmation',
-        text: 'Welcome to Blocipedia',
+        from: 'test@example.com',
+        subject: 'TeamEffort Account Confirmation',
+        text: 'Welcome to TeamEffort',
         html: '<strong>Please login to start creating wikis</strong>',
       };
       sgMail.send(msg);
