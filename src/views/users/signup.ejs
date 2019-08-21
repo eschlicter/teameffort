@@ -16,6 +16,12 @@
           <form method="POST" action="/users/signup">
 
             <div class="form-group">
+              <label>Username:</label>
+              <input type="username" name="username" placeholder="Enter Username" class="form-control"/>
+              <small class="text-muted" id="usernameHelp">must be a valid email address and cannot already be in use</small>
+            </div>
+
+            <div class="form-group">
               <label>Email:</label>
               <input type="email" name="email" placeholder="Enter Email" class="form-control"/>
               <small class="text-muted" id="emailHelp">must be a valid email address and cannot already be in use</small>

@@ -16,25 +16,47 @@ module.exports = {
     })
   },
 
-  getWiki(id, callback){
-    let result = {};
-    Wiki.findById(id)
-    .then((wiki) => {
-      if(!wiki) {
-        callback(404);
-      } else {
-        result["wiki"] = wiki;
-        Collaborator.scope({method: ["collaboratorsFor", id]}).all()
-        .then((collabs) => {
-          result["collaborators"] = collaborators;
-          callback(null, result);
-        })
-        .catch((err) => {
-          callback(err);
-        })
-      }
-    }
-  )},
+  getWiki(id, callback) {
+		let result = {};
+
+		return Wiki.findById(id)
+			.then(wiki => {
+				if (!wiki) {
+					callback(404);
+				} else {
+					result['wiki'] = wiki;
+					Collaborator.scope({ method: ['collaboratorsFor', id] })
+						.all()
+						.then(collaborators => {
+							result['collaborators'] = collaborators;
+							callback(null, result);
+						});
+				}
+			})
+			.catch(err => {
+				callback(err);
+			});
+	},
+
+  // getWiki(id, callback){
+  //   let result = {};
+  //   return Wiki.findById(id)
+  //   .then((wiki) => {
+  //     if(!wiki) {
+  //       callback(404);
+  //     } else {
+  //       result["wiki"] = wiki;
+  //       Collaborator.scope({method: ["collaboratorsFor", id]}).all()
+  //       .then((collabs) => {
+  //         result["collaborators"] = collaborators;
+  //         callback(null, result);
+  //       })
+  //       .catch((err) => {
+  //         callback(err);
+  //       })
+  //     }
+  //   }
+  // )},
    
 
 	addWiki(newWiki, callback){

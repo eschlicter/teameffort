@@ -1,6 +1,6 @@
 const wikiQueries = require("../db/queries.wikis.js");
 const Authorizer = require("../policies/application");
-const markdown = require( "markdown" ).markdown;
+const markdown = require("markdown").markdown;
 
 module.exports = {
 
@@ -45,7 +45,7 @@ module.exports = {
           };
           wikiQueries.addWiki(newWiki, (err, wiki) => {
             if(err){
-              res.redirect(500, "wikis/new");
+              res.redirect(500, "/wikis/new");
             } else {
               res.redirect(303, `/wikis/${wiki.id}`);
             }
@@ -58,7 +58,7 @@ module.exports = {
 
       show(req, res, next){
         wikiQueries.getWiki(req.params.id, (err, result) => {
-          wiki = result["wiki"];
+          wiki = result['wiki'];
           if(err || wiki == null){
             console.log(collaborators);
             res.redirect(404, "/");
